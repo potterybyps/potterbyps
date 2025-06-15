@@ -1,2 +1,102 @@
-<HTML>
-</HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pottery Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fdfcf9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #4b3e2f;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+      gap: 20px;
+    }
+
+    .pottery-item {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .pottery-item img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .description {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .description h2 {
+      margin: 0 0 10px;
+      font-size: 1.4em;
+      color: #4b3e2f;
+    }
+
+    .description p {
+      margin: 0;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pottery Gallery</h1>
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    const potteryItems = [
+      {
+        image: "https://via.placeholder.com/300x200?text=Pottery+1",
+        title: "Classic Clay Vase",
+        description: "Hand-thrown vase made with traditional methods. Perfect for dried flowers."
+      },
+      {
+        image: "https://via.placeholder.com/300x200?text=Pottery+2",
+        title: "Modern Ceramic Bowl",
+        description: "A sleek design suitable for decorative or kitchen use."
+      },
+      {
+        image: "https://via.placeholder.com/300x200?text=Pottery+3",
+        title: "Textured Mug Set",
+        description: "Set of 2 handmade mugs with natural glaze. Dishwasher-safe."
+      },
+      // Add more items as needed
+    ];
+
+    const gallery = document.getElementById("gallery");
+
+    potteryItems.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "pottery-item";
+
+      div.innerHTML = `
+        <img src="${item.image}" alt="${item.title}">
+        <div class="description">
+          <h2>${item.title}</h2>
+          <p>${item.description}</p>
+        </div>
+      `;
+
+      gallery.appendChild(div);
+    });
+  </script>
+</body>
+</html>
